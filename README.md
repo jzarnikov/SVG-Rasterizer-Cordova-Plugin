@@ -1,0 +1,2 @@
+SVG-Rasterizer-Cordova-Plugin
+=============================
