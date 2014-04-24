@@ -11,8 +11,8 @@
     <description> SVG-Rasterizer Cordova Plugin</description>
 
 
-    <js-module src="www/androidSDKVersion.js" name="androidSDKVersion">
-        <clobbers target="AndroidSDKVersion" />
+    <js-module src="www/SVGRasterization.js" name="SVGRasterization">
+        <clobbers target="SVGRasterization" />
     </js-module>
 
     <!-- android -->
@@ -24,5 +24,6 @@
         </config-file>
 
 	<source-file src="src/at/irian/cordova/svg/SVGRasterizerPlugin.java" target-dir="src/at/irian/cordova/svg" />
+    <source-file src="lib/android/androidsvg-1.2.1.jar" target-dir="libs"/>
     </platform>
 </plugin>
