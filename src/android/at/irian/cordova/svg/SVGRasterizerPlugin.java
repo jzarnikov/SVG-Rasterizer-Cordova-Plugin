@@ -49,6 +49,7 @@ public class SVGRasterizerPlugin extends CordovaPlugin {
         SVG svg = SVG.getFromInputStream(svgData);
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
+        canvas.scale(width / svg.getDocumentWidth(), height / svg.getDocumentHeight(), 0F, 0F);
         svg.renderToCanvas(canvas);
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, output);
     }
