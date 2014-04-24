@@ -19,7 +19,7 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="SVGRasterizer">
-                <param name="android-package" value="at.irian.cordova.svg" />
+                <param name="android-package" value="at.irian.cordova.svg.SVGRasterizerPlugin" />
             </feature>
         </config-file>
 
