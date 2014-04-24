@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
+        id="org.apache.cordova.plugin.androidsdkversion"
+        version="0.1.0">
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+    <name>SVG-Rasterizer</name>
+    <description> SVG-Rasterizer Cordova Plugin</description>
+
+
+    <js-module src="www/androidSDKVersion.js" name="androidSDKVersion">
+        <clobbers target="AndroidSDKVersion" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="SVGRasterizer">
+                <param name="android-package" value="at.irian.cordova.svg" />
+            </feature>
+        </config-file>
+
+	<source-file src="src/at/irian/cordova/svg/SVGRasterizerPlugin.java" target-dir="src/at/irian/cordova/svg" />
+    </platform>
+</plugin>
