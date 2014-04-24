@@ -17,18 +17,24 @@ import java.io.OutputStream;
 public class SVGRasterizerPlugin extends CordovaPlugin {
 
     @Override
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
+    public boolean execute(String action, final JSONArray args, final CallbackContext callbackContext) {
         if ("rasterize".equals(action)) {
-            try {
-                int width = (int) Math.ceil(args.getDouble(1));
-                int height = (int) Math.ceil(args.getDouble(2));
-                callbackContext.success(convertSvgToDataUri(args.getString(0), width, height));
-                return true;
-            } catch (Exception e) {
-                e.printStackTrace();
-                callbackContext.error(e.getMessage());
-                return false;
-            }
+            cordova.getThreadPool().execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        String path = args.getString(0);
+                        int width = (int) Math.ceil(args.getDouble(1));
+                        int height = (int) Math.ceil(args.getDouble(2));
+                        callbackContext.success(convertSvgToDataUri(path, width, height));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        callbackContext.error(e.getMessage());
+                    }
+                }
+            });
+            return true;
+
         }
         return false;
     }
